@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "Genesis Profile Blocker",
+    "description": "Genesis tools", 
+    "version": "1.0",
+    "icons": {
+        "16": "/images/genesis-logo-16.png",
+        "48": "/images/genesis-logo-48.png",
+        "128": "/images/genesis-logo-128.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "16": "/images/genesis-logo-16.png",
+            "48": "/images/genesis-logo-48.png",
+            "128": "/images/genesis-logo-128.png"
+        },
+        "default_popup":"popup.html",
+        "default_title":"Enter password!"
+    },
+    "web_accessible_resources": ["/images/incog.jpeg", "global.txt"],
+    "content_scripts":[{
+        "matches": ["https://students.sbschools.org/genesis/parents?tab1=studentdata&tab2=studentsummary*"],
+        "js": ["profilehide.js"]
+    },
+    {
+        "matches": ["https://students.sbschools.org/genesis/parents?tab1=studentdata&tab2=gradebook&tab3*"],
+        "js": ["gradehide.js"]
+    }],
+    "permissions": ["tabs"]
+}
